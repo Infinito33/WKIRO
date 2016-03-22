@@ -5,3 +5,10 @@
 .DS_Store
 /build
 /captures
+/.idea
+/libraries
+/libraries/opencv
+.idea
+/.idea/*
+.idea/misc.xml
+.idea/misc.xml
