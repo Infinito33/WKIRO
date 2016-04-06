@@ -13,6 +13,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.wkiro.R;
+import com.wkiro.appLogic.ImageTransformer;
+import com.wkiro.appLogic.ImageTransformerFactory;
+import com.wkiro.appLogic.transformStrategies.eTransformStrategy;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -34,6 +37,8 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
 
     private CameraBridgeViewBase mOpenCvCameraView;
     private Mat mRgba;
+
+    private ImageTransformer _imageTransformer;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -71,6 +76,16 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.picturePreviewActivity);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String transformStrategyString = extras.getString("transform_strategy");
+            eTransformStrategy strategy = eTransformStrategy.valueOf(transformStrategyString);
+            _imageTransformer = ImageTransformerFactory.CreateStrategyFromEnum(strategy);
+        }
+        else {
+            _imageTransformer = ImageTransformerFactory.CreateNoActionTransformer();
+        }
     }
 
     @Override
@@ -159,7 +174,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         mRgba = inputFrame.rgba();
 
         //PRZETWARZANIE RAMEK
-        Imgproc.cvtColor(mRgba, mRgba, Imgproc.COLOR_RGB2HSV);
+        mRgba = _imageTransformer.Transform(mRgba);
 
         return mRgba;
     }

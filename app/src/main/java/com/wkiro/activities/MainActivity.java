@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import com.wkiro.R;
+import com.wkiro.appLogic.transformStrategies.eTransformStrategy;
 
 /**
  * Główna klasa pełniąca rolę dashboardu.
@@ -16,10 +19,15 @@ import com.wkiro.R;
  */
 public class MainActivity extends AppCompatActivity {
 
+    Spinner _mySpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        _mySpinner = (Spinner) findViewById(R.id.transformStrategySpinner);
+        _mySpinner.setAdapter(new ArrayAdapter<eTransformStrategy>(this, android.R.layout.simple_list_item_1, eTransformStrategy.values()));
     }
 
     @Override
@@ -51,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void startPicturePreview(View view) {
         Intent intent = new Intent(this, PicturePreviewActivity.class);
+        String selectedItemString = _mySpinner.getSelectedItem().toString();
+        intent.putExtra("transform_strategy", selectedItemString);
         startActivity(intent);
     }
 }
