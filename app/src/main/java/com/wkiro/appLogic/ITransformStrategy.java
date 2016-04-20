@@ -9,6 +9,6 @@ import org.opencv.core.Mat;
  */
 public interface ITransformStrategy {
 
-    public Mat PerformTransformation(Mat image);
+    public Mat performTransformation(Mat image);
 
 }

@@ -8,5 +8,15 @@ package com.wkiro.appLogic.transformStrategies;
 public enum eTransformStrategy {
     NoAction,
     Negative,
-    Sepia
+    Sepia,
+    BilateralBlur,
+    GaussianBlur,
+    HomogeneousBlur,
+    MedianBlur,
+/*    GaussianNoise,*/
+    BrightenImage,
+    SharperImage,
+    Dilate,
+    Erode,
+    CannyEdge
 }

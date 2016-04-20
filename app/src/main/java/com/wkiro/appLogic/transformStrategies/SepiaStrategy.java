@@ -24,7 +24,7 @@ public class SepiaStrategy implements ITransformStrategy {
     }
 
     @Override
-    public Mat PerformTransformation(Mat image) {
+    public Mat performTransformation(Mat image) {
         //int top = image.height() / 8;
         //int left = image.width() / 8;
         //int height = image.height() * 3 / 4;

@@ -16,6 +16,6 @@ public class ImageTransformer {
     }
 
     public Mat Transform(Mat image) {
-        return _transformStrategy.PerformTransformation(image);
+        return _transformStrategy.performTransformation(image);
     }
 }

@@ -25,7 +25,6 @@ import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
 
 /**
  * Klasa umożliwiająca pobieranie na żywo obrazu z kamery i przetwarzanie ramek w metodzie {@link #onCameraFrame(CvCameraViewFrame)}.
@@ -38,7 +37,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
     private CameraBridgeViewBase mOpenCvCameraView;
     private Mat mRgba;
 
-    private ImageTransformer _imageTransformer;
+    private ImageTransformer imageTransformer;
 
     private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -46,10 +45,10 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS: {
                     Log.i(TAG, "OpenCV loaded successfully");
+                    loadImageStrategy();
                     mOpenCvCameraView.enableView();
                     mOpenCvCameraView.enableFpsMeter();
                     mOpenCvCameraView.setOnTouchListener(PicturePreviewActivity.this);
-
                 }
                 break;
                 default: {
@@ -59,6 +58,17 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
             }
         }
     };
+
+    private void loadImageStrategy() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String transformStrategyString = extras.getString("transform_strategy");
+            eTransformStrategy strategy = eTransformStrategy.valueOf(transformStrategyString);
+            imageTransformer = ImageTransformerFactory.CreateStrategyFromEnum(strategy);
+        } else {
+            imageTransformer = ImageTransformerFactory.CreateNoActionTransformer();
+        }
+    }
 
     public PicturePreviewActivity() {
         Log.i(TAG, "Instantiated new " + this.getClass());
@@ -76,16 +86,6 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.picturePreviewActivity);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
-
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String transformStrategyString = extras.getString("transform_strategy");
-            eTransformStrategy strategy = eTransformStrategy.valueOf(transformStrategyString);
-            _imageTransformer = ImageTransformerFactory.CreateStrategyFromEnum(strategy);
-        }
-        else {
-            _imageTransformer = ImageTransformerFactory.CreateNoActionTransformer();
-        }
     }
 
     @Override
@@ -174,7 +174,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         mRgba = inputFrame.rgba();
 
         //PRZETWARZANIE RAMEK
-        mRgba = _imageTransformer.Transform(mRgba);
+        mRgba = imageTransformer.Transform(mRgba);
 
         return mRgba;
     }

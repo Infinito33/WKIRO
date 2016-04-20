@@ -12,7 +12,7 @@ import org.opencv.core.Mat;
 public class NoActionStrategy implements ITransformStrategy {
 
     @Override
-    public Mat PerformTransformation(Mat image) {
+    public Mat performTransformation(Mat image) {
         return image;
     }
 

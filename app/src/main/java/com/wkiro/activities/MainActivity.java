@@ -19,15 +19,15 @@ import com.wkiro.appLogic.transformStrategies.eTransformStrategy;
  */
 public class MainActivity extends AppCompatActivity {
 
-    Spinner _mySpinner;
+    Spinner transformTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        _mySpinner = (Spinner) findViewById(R.id.transformStrategySpinner);
-        _mySpinner.setAdapter(new ArrayAdapter<eTransformStrategy>(this, android.R.layout.simple_list_item_1, eTransformStrategy.values()));
+        transformTypeSpinner = (Spinner) findViewById(R.id.transformStrategySpinner);
+        transformTypeSpinner.setAdapter(new ArrayAdapter<eTransformStrategy>(this, android.R.layout.simple_list_item_1, eTransformStrategy.values()));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void startPicturePreview(View view) {
         Intent intent = new Intent(this, PicturePreviewActivity.class);
-        String selectedItemString = _mySpinner.getSelectedItem().toString();
+        String selectedItemString = transformTypeSpinner.getSelectedItem().toString();
         intent.putExtra("transform_strategy", selectedItemString);
         startActivity(intent);
     }
