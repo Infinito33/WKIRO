@@ -6,4 +6,7 @@
     <string name="title_activity_picture_preview">PicturePreviewActivity</string>
 
     <string name="goPicturePreviewActivityBtn">Default preview</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_transform_picker">TransformPickerActivity</string>
+    <string name="title_activity_picture_picker">PicturePickerActivity</string>
 </resources>

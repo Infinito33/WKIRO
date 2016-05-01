@@ -5,4 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="dashboard">
+        <item name="android:numColumns">2</item>
+    </style>
+
 </resources>

@@ -13,9 +13,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.wkiro.R;
-import com.wkiro.appLogic.ImageTransformer;
-import com.wkiro.appLogic.ImageTransformerFactory;
-import com.wkiro.appLogic.transformStrategies.eTransformStrategy;
+import com.wkiro.logic.ImageTransformer;
+import com.wkiro.logic.ImageTransformerFactory;
+import com.wkiro.logic.transformStrategies.eTransformStrategy;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -129,6 +129,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         }
     }
 
+    @Override
     public void onDestroy() {
         super.onDestroy();
         if (mOpenCvCameraView != null)
@@ -173,8 +174,12 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
 
         mRgba = inputFrame.rgba();
 
+        System.out.println(mRgba.type());
+        System.out.println(mRgba.channels());
+        System.out.println(mRgba.depth());
+
         //PRZETWARZANIE RAMEK
-        mRgba = imageTransformer.Transform(mRgba);
+        mRgba = imageTransformer.transform(mRgba);
 
         return mRgba;
     }
