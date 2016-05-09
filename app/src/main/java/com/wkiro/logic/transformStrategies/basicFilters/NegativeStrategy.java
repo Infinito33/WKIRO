@@ -8,7 +8,7 @@ import org.opencv.core.Scalar;
 
 /**
  * Converts input into a negative image.
- *
+ * <p/>
  * Created by Wiktor on 2016-04-04.
  */
 public class NegativeStrategy implements ITransformStrategy {
@@ -19,10 +19,10 @@ public class NegativeStrategy implements ITransformStrategy {
     @Override
     public Mat performTransformation(Mat image) {
 
-        if(kernel == null) {
-            kernel = new Mat(image.rows(),image.cols(), image.type(), new Scalar(255,255,255));
+        if (kernel == null) {
+            kernel = new Mat(image.rows(), image.cols(), image.type(), new Scalar(255, 255, 255));
         }
-        if(result == null) {
+        if (result == null) {
             result = new Mat(image.rows(), image.cols(), image.type());
         }
 

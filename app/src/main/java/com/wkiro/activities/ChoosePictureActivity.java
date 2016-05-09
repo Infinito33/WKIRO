@@ -1,12 +1,11 @@
 package com.wkiro.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +26,8 @@ import org.opencv.core.Mat;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class PicturePickerActivity extends Activity {
+public class ChoosePictureActivity extends AppCompatActivity {
+    private static final String TAG = "Choose picture";
 
     private ImageTransformer imageTransformer;
 
@@ -57,6 +57,10 @@ public class PicturePickerActivity extends Activity {
         } else {
             imageTransformer = ImageTransformerFactory.CreateNoActionTransformer();
         }
+    }
+
+    public ChoosePictureActivity() {
+        Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
     @Override
@@ -90,7 +94,13 @@ public class PicturePickerActivity extends Activity {
     @Override
     public void onResume() {
         super.onResume();
-        OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_1_0, this, mLoaderCallback);
+        if (!OpenCVLoader.initDebug()) {
+            Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_1_0, this, mLoaderCallback);
+        } else {
+            Log.d(TAG, "OpenCV library found inside package. Using it!");
+            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+        }
     }
 
     public void pickPhoto(View view) {

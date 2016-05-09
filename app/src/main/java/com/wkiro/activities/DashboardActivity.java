@@ -1,26 +1,18 @@
 package com.wkiro.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wkiro.R;
 import com.wkiro.utils.ImageAdapter;
-import com.wkiro.utils.LauncherIcon;
 
 /**
  * Główna klasa pełniąca rolę dashboardu.
@@ -53,7 +45,6 @@ public class DashboardActivity extends AppCompatActivity implements AdapterView.
         if(position == 0 || position == 1) {
             Intent intent = new Intent(this, TransformPickerActivity.class);
             intent.putExtra("activityType", position);
-            intent.putExtra("transform_strategy", "Negative");
             startActivity(intent);
         } else if(position == 3) {
             System.exit(0);

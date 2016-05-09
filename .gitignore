@@ -12,3 +12,6 @@
 /.idea/*
 .idea/misc.xml
 .idea/misc.xml
+libraries/opencv/build/intermediates/bundles/debug/classes.jar
+libraries/opencv/build/intermediates/bundles/debug/classes.jar
+libraries/opencv/build/outputs/aar/opencv-release.aar

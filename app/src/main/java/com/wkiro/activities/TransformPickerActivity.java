@@ -72,7 +72,7 @@ public class TransformPickerActivity extends AppCompatActivity {
             case 0:
                 return PicturePreviewActivity.class;
             case 1:
-                return PicturePickerActivity.class;
+                return ChoosePictureActivity.class;
             default:
                 return PicturePreviewActivity.class;
         }

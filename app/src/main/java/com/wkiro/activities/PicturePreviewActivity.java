@@ -174,10 +174,6 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
 
         mRgba = inputFrame.rgba();
 
-        System.out.println(mRgba.type());
-        System.out.println(mRgba.channels());
-        System.out.println(mRgba.depth());
-
         //PRZETWARZANIE RAMEK
         mRgba = imageTransformer.transform(mRgba);
 

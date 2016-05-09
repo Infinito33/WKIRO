@@ -49,7 +49,7 @@
             android:label="@string/title_activity_transform_picker" >
         </activity>
         <activity
-            android:name=".activities.PicturePickerActivity"
+            android:name=".activities.ChoosePictureActivity"
             android:label="@string/title_activity_picture_picker" >
         </activity>
     </application>
