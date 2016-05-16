@@ -8,15 +8,25 @@ package com.wkiro.logic.transformStrategies;
 public enum eTransformStrategy {
     NoAction,
     Negative,
-    Sepia,
-    BilateralBlur,
+    AddValue,
+    SubtractValue,
+    MultiplyValue,
+    DivideValue,
+    GammaCorrection,
+    Thresholding,
+    /*Sepia,
+    BilateralBlur,*/
     GaussianBlur,
-    HomogeneousBlur,
+    /*HomogeneousBlur,*/
     MedianBlur,
-/*    GaussianNoise,*/
-    BrightenImage,
-    SharperImage,
+    GaussianNoise,
+    /*BrightenImage,
+    SharperImage,*/
     Dilate,
     Erode,
-    CannyEdge
+    Opening,
+    Closing,
+    CannyEdge,
+    SobelEdge,
+    LaplacianEdge
 }

@@ -31,7 +31,7 @@ import org.opencv.core.Mat;
  *
  * @author tomasz.huchro, 2016-03-18
  */
-public class PicturePreviewActivity extends AppCompatActivity implements OnTouchListener, CvCameraViewListener2 {
+public class CameraModeActivity extends AppCompatActivity implements OnTouchListener, CvCameraViewListener2 {
     private static final String TAG = "Picture preview";
 
     private CameraBridgeViewBase mOpenCvCameraView;
@@ -48,7 +48,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
                     loadImageStrategy();
                     mOpenCvCameraView.enableView();
                     mOpenCvCameraView.enableFpsMeter();
-                    mOpenCvCameraView.setOnTouchListener(PicturePreviewActivity.this);
+                    mOpenCvCameraView.setOnTouchListener(CameraModeActivity.this);
                 }
                 break;
                 default: {
@@ -70,7 +70,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         }
     }
 
-    public PicturePreviewActivity() {
+    public CameraModeActivity() {
         Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
@@ -81,7 +81,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements OnTouch
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-        setContentView(R.layout.activity_picture_preview);
+        setContentView(R.layout.activity_camera_mode);
 
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.picturePreviewActivity);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);

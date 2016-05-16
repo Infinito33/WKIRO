@@ -26,7 +26,7 @@ import org.opencv.core.Mat;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-public class ChoosePictureActivity extends AppCompatActivity {
+public class PhotoModeActivity extends AppCompatActivity {
     private static final String TAG = "Choose picture";
 
     private ImageTransformer imageTransformer;
@@ -59,14 +59,14 @@ public class ChoosePictureActivity extends AppCompatActivity {
         }
     }
 
-    public ChoosePictureActivity() {
+    public PhotoModeActivity() {
         Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_picture_picker);
+        setContentView(R.layout.activity_photo_mode);
     }
 
     @Override
@@ -134,6 +134,9 @@ public class ChoosePictureActivity extends AppCompatActivity {
 
                         ImageView image = (ImageView) findViewById(R.id.image);
                         image.setImageBitmap(transformedFinalImage);
+
+                        ImageView originalImage = (ImageView) findViewById(R.id.imageBefore);
+                        originalImage.setImageBitmap(selectedImage);
 
                     } catch (FileNotFoundException e) {
                         System.out.println(e.getMessage());

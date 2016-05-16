@@ -15,14 +15,14 @@ import com.wkiro.logic.transformStrategies.eTransformStrategy;
 /**
  * Activity for picking type of further transformation
  */
-public class TransformPickerActivity extends AppCompatActivity {
+public class TransformSelectActivity extends AppCompatActivity {
 
     private Spinner transformTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transform_picker);
+        setContentView(R.layout.activity_transform_select);
 
         transformTypeSpinner = (Spinner) findViewById(R.id.transformStrategySpinner);
         transformTypeSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eTransformStrategy.values()));
@@ -70,11 +70,11 @@ public class TransformPickerActivity extends AppCompatActivity {
     private Class<?> chooseActivity(int position) {
         switch (position) {
             case 0:
-                return PicturePreviewActivity.class;
+                return CameraModeActivity.class;
             case 1:
-                return ChoosePictureActivity.class;
+                return PhotoModeActivity.class;
             default:
-                return PicturePreviewActivity.class;
+                return CameraModeActivity.class;
         }
     }
 }

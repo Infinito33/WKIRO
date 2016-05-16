@@ -21,7 +21,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activities.DashboardActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.PicturePreviewActivity"
+            android:name=".activities.CameraModeActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/title_activity_picture_preview"
             android:screenOrientation="landscape"
@@ -45,12 +46,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.TransformPickerActivity"
-            android:label="@string/title_activity_transform_picker" >
+            android:name=".activities.TransformSelectActivity"
+            android:label="@string/title_activity_transform_picker"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activities.ChoosePictureActivity"
-            android:label="@string/title_activity_picture_picker" >
+            android:name=".activities.PhotoModeActivity"
+            android:label="@string/title_activity_picture_picker"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

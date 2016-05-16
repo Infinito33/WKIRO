@@ -43,7 +43,7 @@ public class DashboardActivity extends AppCompatActivity implements AdapterView.
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         if(position == 0 || position == 1) {
-            Intent intent = new Intent(this, TransformPickerActivity.class);
+            Intent intent = new Intent(this, TransformSelectActivity.class);
             intent.putExtra("activityType", position);
             startActivity(intent);
         } else if(position == 3) {

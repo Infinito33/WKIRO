@@ -2,6 +2,7 @@ package com.wkiro.logic.transformStrategies.edgeDetection;
 
 import com.wkiro.logic.ITransformStrategy;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Point;
@@ -58,15 +59,9 @@ public class CannyEdgeDetectionStrategy implements ITransformStrategy {
 
         Imgproc.Canny(destination, cannyImage, this.threshold * 2, this.maxThreshold);
 
-        // CV_RETR_TREE == 3
-        Imgproc.findContours(cannyImage, contours, hierarchy, 3, Imgproc.CHAIN_APPROX_SIMPLE, point);
+        Mat abs_result = new Mat();
+        Core.convertScaleAbs( cannyImage, abs_result );
 
-        for (int i = 0; i < contours.size(); i++) {
-            Imgproc.drawContours(image, contours, i, color, 2);
-        }
-
-        contours.clear();
-
-        return image;
+        return abs_result;
     }
 }
