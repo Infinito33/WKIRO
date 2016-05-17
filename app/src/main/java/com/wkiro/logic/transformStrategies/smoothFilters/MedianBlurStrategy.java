@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.smoothFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
@@ -17,7 +18,9 @@ public class MedianBlurStrategy implements ITransformStrategy {
     private int kernel;
 
     public MedianBlurStrategy() {
-        this.kernel = 9;
+
+        TransformConfig config = TransformConfig.GetInstance();
+        this.kernel = config.BlurKernelSize;
     }
 
     @Override

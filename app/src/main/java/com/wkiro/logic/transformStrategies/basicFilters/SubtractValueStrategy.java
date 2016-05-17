@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.basicFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -12,7 +13,13 @@ import org.opencv.core.Scalar;
 public class SubtractValueStrategy implements ITransformStrategy {
 
     private Mat lookupTable, result;
-    private int valueToSubtract = 10;
+    private int valueToSubtract;
+
+    public SubtractValueStrategy()
+    {
+        TransformConfig config = TransformConfig.GetInstance();
+        valueToSubtract = config.AddSubValue;
+    }
 
     @Override
     public Mat performTransformation(Mat image) {

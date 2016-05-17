@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.morphologyFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
@@ -22,7 +23,8 @@ public class DilateStrategy implements ITransformStrategy {
     private Mat destination;
 
     public DilateStrategy() {
-        this.dilateSize = 5;
+        TransformConfig config = TransformConfig.GetInstance();
+        this.dilateSize = config.MorphOperationSize;
         this.ksize = new Size(2 * dilateSize + 1, 2 * dilateSize + 1);
         this.element = Imgproc.getStructuringElement(Imgproc.MORPH_RECT, ksize);
     }

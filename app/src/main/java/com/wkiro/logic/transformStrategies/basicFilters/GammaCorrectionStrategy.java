@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.basicFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -13,7 +14,13 @@ public class GammaCorrectionStrategy implements ITransformStrategy {
 
     private Mat result;
     Mat lookupTable;
-    private double gamma = 1.5;
+    private double gamma;
+
+    public GammaCorrectionStrategy()
+    {
+        TransformConfig config = TransformConfig.GetInstance();
+        gamma = config.GammaValue;
+    }
 
     @Override
     public Mat performTransformation(Mat image) {

@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.smoothFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
@@ -18,7 +19,8 @@ public class GaussianBlurStrategy implements ITransformStrategy {
     private double kernel;
 
     public GaussianBlurStrategy() {
-        this.kernel = 9.0;
+        TransformConfig config = TransformConfig.GetInstance();
+        this.kernel = config.BlurKernelSize;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.smoothFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -19,7 +20,8 @@ public class BilateralBlurStrategy implements ITransformStrategy {
     private int diameter;
 
     public BilateralBlurStrategy() {
-        this.kernel = 9.0;
+        TransformConfig config = TransformConfig.GetInstance();
+        this.kernel = config.BlurKernelSize;
         this.diameter = 9;
     }
 

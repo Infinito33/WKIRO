@@ -31,20 +31,99 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/welcomeTitle"
         android:layout_alignStart="@+id/welcomeTitle"
         android:layout_below="@+id/welcomeTitle"
-        android:gravity="bottom"
-        android:orientation="horizontal">
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add/subtract value:" />
+            <EditText
+                android:id="@+id/AddSubValueBox"
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Multiply/divide value:" />
+            <EditText
+                android:id="@+id/MulDivValueSpinner"
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gamma value:" />
+            <EditText
+                android:id="@+id/GammaSpinner"
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Segmentation threshold value:" />
+            <EditText
+                android:id="@+id/ThresholdSpinner"
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blur kernel size:" />
+            <EditText
+                android:id="@+id/KernelSizeSpinner"
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Erode/Dilate value:" />
+            <EditText
+                android:id="@+id/MorphSpinner"
+                android:inputType="number"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
+            </EditText>
+        </LinearLayout>
 
         <Button
             android:id="@+id/picturePreviewButton"
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="bottom"
             android:layout_weight="1"
             android:onClick="startPicturePreview"
             android:text="Start Preview" />

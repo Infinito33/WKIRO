@@ -1,6 +1,7 @@
 package com.wkiro.logic.transformStrategies.basicFilters;
 
 import com.wkiro.logic.ITransformStrategy;
+import com.wkiro.utils.TransformConfig;
 
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -12,7 +13,14 @@ import org.opencv.core.Scalar;
 public class MultiplyValueStrategy implements ITransformStrategy {
 
     private Mat lookupTable, result;
-    private double valueToMultiply = 1.4;
+    private double valueToMultiply;
+
+    public MultiplyValueStrategy()
+    {
+        TransformConfig config = TransformConfig.GetInstance();
+        valueToMultiply = config.MulDivValue;
+    }
+
 
     @Override
     public Mat performTransformation(Mat image) {
