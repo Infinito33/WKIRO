@@ -18,11 +18,7 @@ import java.util.Random;
  * Created by tomasz.huchro on 2016-04-14.
  */
 public class SaltAndPepperNoiseStrategy implements ITransformStrategy {
-
-    private double mean;
-    private double stddev;
-
-    //NIE DZIALA
+    
     @Override
     public Mat performTransformation(Mat image) {
         Random generator = new Random();
