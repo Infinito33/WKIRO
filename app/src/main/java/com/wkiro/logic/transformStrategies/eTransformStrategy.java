@@ -19,7 +19,7 @@ public enum eTransformStrategy {
     GaussianBlur,
     /*HomogeneousBlur,*/
     MedianBlur,
-    GaussianNoise,
+    SaltAndPepperNoise,
     /*BrightenImage,
     SharperImage,*/
     Dilate,

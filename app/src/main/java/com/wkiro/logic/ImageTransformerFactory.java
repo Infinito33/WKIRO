@@ -19,7 +19,7 @@ import com.wkiro.logic.transformStrategies.morphologyFilters.ClosingStrategy;
 import com.wkiro.logic.transformStrategies.morphologyFilters.DilateStrategy;
 import com.wkiro.logic.transformStrategies.morphologyFilters.ErodeStrategy;
 import com.wkiro.logic.transformStrategies.morphologyFilters.OpeningStrategy;
-import com.wkiro.logic.transformStrategies.noiseFilters.GaussianNoiseStrategy;
+import com.wkiro.logic.transformStrategies.noiseFilters.SaltAndPepperNoiseStrategy;
 import com.wkiro.logic.transformStrategies.smoothFilters.BilateralBlurStrategy;
 import com.wkiro.logic.transformStrategies.smoothFilters.GaussianBlurStrategy;
 import com.wkiro.logic.transformStrategies.smoothFilters.HomogeneousBlurStrategy;
@@ -61,8 +61,8 @@ public class ImageTransformerFactory {
                 return CreateGaussianBlurTransformer();
             case MedianBlur:
                 return CreateMedianBlurTransformer();
-           case GaussianNoise:
-                return CreateGaussianNoiseTransformer();
+           case SaltAndPepperNoise:
+                return CreateSaltAndPepperNoiseTransformer();
             /*case BrightenImage:
                 return CreateBrightenImageTransformer();
             case SharperImage:
@@ -154,8 +154,8 @@ public class ImageTransformerFactory {
         return new ImageTransformer(new MedianBlurStrategy());
     }
 
-    public static ImageTransformer CreateGaussianNoiseTransformer() {
-        return new ImageTransformer(new GaussianNoiseStrategy());
+    public static ImageTransformer CreateSaltAndPepperNoiseTransformer() {
+        return new ImageTransformer(new SaltAndPepperNoiseStrategy());
     }
 
     public static ImageTransformer CreateBrightenImageTransformer() {
